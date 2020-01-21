@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<h1 class="text-center">Ask a New Question</h1>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-6">
+      <form method='POST' enctype="multipart/form-data">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  
+  <input type="Submit" class="btn btn-success btn-sm" value="Ask Question">
+</form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
