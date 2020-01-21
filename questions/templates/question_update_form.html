@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<h2>Edit the Question and save your changes</h2>
+<form method='POST' enctype="multipart/form-data">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <input type="Submit" class="btn btn-success btn-sm" value="Save Changes">
+</form>
+
+{% endblock %}
