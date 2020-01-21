@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h5 class="font-weight-bold">Question</h5>
+    <p>
+      {{answer.question.name}}
+    </p>
+    <h6 class="font-weight-bold">Answer</h6>
+    <p>
+      {{answer.body}}
+    </p>
+    <div class="btn-group btn-group-sm">
+      {% if user.is_authenticated %}
+      <a href="javascript:{document.getElementById('upvote').submit()}"><button class="btn btn-primary btn-sm">Upvote
+          this
+          answer</button></a>
+      {% endif %}
+
+      <a href="{% url 'questions:question_single' slug=answer.question.slug %}" class="btn btn-warning btn-sm">Back to
+        Question</a>
+
+      <form id="upvote" method="POST" action="{% url 'questions:upvote' pk=answer.pk %}">
+        {% csrf_token %}
+        <input type="hidden">
+      </form>
+
+      <br />
+      {% if user.is_authenticated and answer.author == user %}
+      <a href="{% url 'questions:remove_answer' pk=answer.pk %}" class="btn btn-sm btn-danger">Delete</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
