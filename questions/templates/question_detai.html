@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+<hr>
+<blockquote class="blockquote bq-primary">
+  <p class="bq-title">{{ question.name }}</p>
+  <p>{{question.body}}
+  </p>
+  <div class="">
+    <h6>Published on: <strong>{{question.created_date}}</strong> by:<a
+        href="{% url 'accounts:profile' slug=question.author.slug %}"> {{ question.author }}</a> </h6>
+  </div>
+  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+    {% if question.author == user %}
+    <a href="{% url 'questions:update_question' slug=question.slug %}"
+      class="btn btn-sm btn-warning text-dark font-weight-bold">Edit Post</a>
+    <a href="{% url 'questions:delete_question' slug=question.slug %}"
+      class="btn btn-sm btn-danger text-dark font-weight-bold">Delete Post</a>
+    {% endif %}
+    {% if question.author == user and question.solved == False %}
+    <a class="btn btn-sm btn-success text-dark font-weight-bold"
+      href="{% url 'questions:question_solved' slug=question.slug %}">Mark Solved</a>
+    {% endif %}
+  </div>
+</blockquote>
+<hr>
+
+</div>
+<div class='container'>
+  <h2 class="font-weight-bold">Answers provided for this question</h2>
+
+  {% if question.solved %}
+  <h5>Question has been solved </h5>
+  {% for answer in question.answers.all|slice:":10" %}
+  {{answer.body}}
+  <a href="{% url 'questions:ans_single' pk=answer.pk %}">​<i class="fa fa-thumbs-o-up" style="font-size:36px"></i></a>
+  <p>Author: {{answer.author}} Upvotes: {{answer.likes}}</p>
+  {% endfor %}
+  {% else %}
+  {% for answer in question.answers.all %}
+  <br>
+  <hr>
+  <strong>Answer:</strong> <p>{{answer.body}}</p>
+  <p>By: <strong>{{answer.author}}</strong> <br> Upvotes: <strong> {{answer.likes}}</strong></p>
+  <a class="btn btn-sm btn-dark-green" href="{% url 'questions:ans_single' pk=answer.pk %}">Upvote Answer</a>
+<hr>
+  {% endfor %}
+
+  <h6 class="font-weight-light">This Question has not been solved yet. <br> Provide your answer below.</h6>
+
+  {% endif %}
+</div>
+
+
+
+{% if user.is_authenticated and question.solved == False %}
+<div class='container'>
+  <div class="row">
+    <div class="col-lg-6">
+      <form method='POST'>
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="Submit" class="btn btn-sm btn-dark-green" value="Add Answer">
+      </form>
+    </div>
+  </div>
+
+</div>
+{% endif %}
+
+{% endblock %}
