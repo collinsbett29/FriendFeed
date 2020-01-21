@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-6">
+      <form method="POST" enctype="multipart/form-data">
+    <h4 class="text-center pb-2">MoringaFlow</h4>
+    <h4 class="text-center">Sign Up</h4>
+    <hr>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" class='btn btn-sm btn-dark-green' value="Sign Up">
+  </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
