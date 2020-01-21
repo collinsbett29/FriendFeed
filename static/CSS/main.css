@@ -1,0 +1,42 @@
+#groups-list>a {
+    background-color: #637c33;
+    font-weight: bold;
+  }
+  
+  #django {
+    background-color: #154b33;
+    color: white;
+    font-weight: bold;
+  }
+  
+  #python {
+    background-image: linear-gradient(to right top, #d1c809, #3dcd5f, #00c1b4, #00aaee, #0c87eb);
+    background-size: 100% 100%;
+    font-weight: bold;
+  }
+  
+  #js {
+    background-color: #f8dc3d;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .card {
+    height: 100%;
+  }
+  
+  .nav-font {
+    font-family: 'Special Elite', cursive;
+    background-color: white;
+  }
+  
+  .card {
+    font-size: 20px;
+  }
+  .profile-card{
+    background-color: #637c33;
+  }
+  
+  .sign{
+    background-color: #637c33;
+  }
