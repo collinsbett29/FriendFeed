@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import django_heroku
 import dj_database_url
 
 
@@ -92,6 +93,8 @@ DATABASES = {
         'NAME': 'goodreads',
         'USER': 'collins',
     'PASSWORD':'##@@collins1',
+		'HOST':'localhost',
+		'PORT':'5432',
     }
 }
 
@@ -149,9 +152,11 @@ LOGOUT_REDIRECT_URL = 'index'
 
 
 
+# configuring the location for media
 MEDIA_URL = '/media/'
-# where can they access the image, the image folder will be in the media directory
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Configure Django App for Heroku.
+django_heroku.settings(locals())
