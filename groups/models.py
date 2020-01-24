@@ -1,11 +1,10 @@
 from django.db import models
-# if you have space in string it will fill with dashes etc so your browser can read it
 from django.utils.text import slugify
 
 
 class Group(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(default='DEFAULT VALUE')
     slug = models.SlugField(allow_unicode=True, unique=True)
     image = models.ImageField(upload_to='groups/', blank=True)
 

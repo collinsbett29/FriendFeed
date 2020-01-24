@@ -8,4 +8,4 @@ class GroupList(ListView):
 
 
 class GroupDetail(DetailView):
-    model = 
+    model = Group

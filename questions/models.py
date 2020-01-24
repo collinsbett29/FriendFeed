@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-# if you have space in string it will fill with dashes etc so your browser can read it
 from django.utils.text import slugify
 from django.urls import reverse
 from groups.models import Group
@@ -40,7 +39,7 @@ class Answer(models.Model):
         settings.AUTH_USER_MODEL, related_name='answers', on_delete=models.PROTECT)
     question = models.ForeignKey(
         'questions.Question', related_name='answers', on_delete=models.CASCADE)
-    body = models.TextField()
+    body = models.TextField(max_length=5)
     likes = models.PositiveIntegerField(default=0)
     created_date = models.DateTimeField(auto_now=True)
 

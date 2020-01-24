@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-# if you have space in string it will fill with dashes etc so your browser can read it
 from django.utils.text import slugify
 
 
@@ -10,7 +9,7 @@ class User(AbstractUser):
     bio = models.CharField(max_length=240, blank=True)
     image = models.ImageField(blank=True, upload_to='avatars/')
     location = models.CharField(max_length=30, blank=True)
-    slug = models.SlugField(allow_unicode=True, unique=True)
+    slug = models.SlugField(allow_unicode=True, unique=True,default="null")
 
     REQUIRED_FIELDS = ['first_name', 'last_name', 'email']
 
@@ -21,7 +20,5 @@ class User(AbstractUser):
         return self.username
 
     def save(self, *args, **kwargs):
-        # when person types in group name with spaces this slugify will
         self.slug = slugify(self.first_name+self.last_name)
-    # change the name so it can be used in URL by browser
         super().save(*args, **kwargs)

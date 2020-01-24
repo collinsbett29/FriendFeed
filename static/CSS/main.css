@@ -40,3 +40,7 @@
   .sign{
     background-color: #637c33;
   }
+
+  .list{
+    list-style-type: square;
+  }
