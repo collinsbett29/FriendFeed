@@ -13,10 +13,12 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import django_heroku
 import dj_database_url
+# from decouple import config,Csv
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 
 
@@ -93,8 +95,6 @@ DATABASES = {
         'NAME': 'goodreads',
         'USER': 'collins',
     'PASSWORD':'##@@collins1',
-		'HOST':'localhost',
-		'PORT':'5432',
     }
 }
 
@@ -132,17 +132,15 @@ USE_TZ = True
 
 AUTH_USER_MODEL = 'accounts.User'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # how to tell django where to look for media files we copied and pasted from databases
@@ -150,13 +148,27 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 
+MEDIA_URL = '/media/'
+# where can they access the image, the image folder will be in the media directory
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+django_heroku.settings(locals())
 
 
 # configuring the location for media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# how to tell django where to look for media files we copied and pasted from databases
+# but changed the string to the media directory
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
