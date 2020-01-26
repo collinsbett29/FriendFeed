@@ -39,7 +39,7 @@ class Answer(models.Model):
         settings.AUTH_USER_MODEL, related_name='answers', on_delete=models.PROTECT)
     question = models.ForeignKey(
         'questions.Question', related_name='answers', on_delete=models.CASCADE)
-    body = models.TextField(max_length=5)
+    body = models.CharField(max_length=200)
     likes = models.PositiveIntegerField(default=0)
     created_date = models.DateTimeField(auto_now=True)
 

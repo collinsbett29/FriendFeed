@@ -12,7 +12,7 @@ class User(AbstractUser):
     slug = models.SlugField(allow_unicode=True, unique=True,default="null")
 
     REQUIRED_FIELDS = ['first_name', 'last_name', 'email']
-
+ 
     def display_name(self):
         return self.first_name + ' ' + self.lastname
 
@@ -21,4 +21,4 @@ class User(AbstractUser):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.first_name+self.last_name)
-        super().save(*args, **kwargs)
+        super().save(*args, **kwargs)   

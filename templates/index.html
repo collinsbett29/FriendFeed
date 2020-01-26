@@ -1,18 +1,159 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block content %}
-<div class="view overlay">
-  <h3 style="font-family: fantasy;font-size: 100px;text-align: center;">Welcome to FriendFeed</h3>
-  <img class="card-img-top"
-    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsz46MSm9N7iF7BGtud4lzh7N_MXL0Kl5vss_kTvsWtjt9UmLofQ&s"
-    alt="Card image cap">
+<body style="background-image: url(https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);">
+
+<div class="container">
+
+  <div class="row">
+    {% for group in group_list %}
+    <div class="col-lg-3 col-md-12 text-center" id="groups-list">
+      <a href="{% url 'groups:single' slug=group.slug %}" class="mt-2 mb-2 btn btn-block">{{group.name}}</a>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 col-md-12">
+      <!-- Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRKk3IsHFcgqQQmbnNAvcDnpzRmQVLv4o9S8wZKyNtRzky54-MU"
+            alt="Card image cap">
+          <a href="https://www.djangoproject.com/" target="_blank">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Title -->
+          <h4 class="card-title">DJANGO</h4>
+          <!-- Text -->
+          <p class="card-text">Django is a high-level Python Web framework that encourages rapid development and clean,
+            pragmatic design. Built by experienced developers, it takes care of much of the hassle of Web development,
+            so
+            you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.</p>
+          <!-- Button -->
+          <a href="https://www.djangoproject.com/" target="_blank" id="django" class="btn btn-sm">Visit Django Docs</a>
+
+        </div>
+
+      </div>
+      <!-- Card -->
+    </div>
+
+    <div class="col-lg-3">
+      <!-- Card -->
+      <div class="card mb-2">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT9LcX0otYcolpJz6FRLf_ic-vsvSLUBpI29CObCQ00HHeibvCs"
+            alt="Card image cap">
+          <a href="https://flask-doc.readthedocs.io/en/latest/index.html" target="_blank">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Title -->
+          <h4 class="card-title">FLASK</h4>
+          <!-- Text -->
+          <p class="card-text">Flask is a lightweight WSGI web application framework. It is designed to make getting
+            started quick and easy, with the ability to scale up to complex applications. It began as a simple wrapper
+            around Werkzeug and Jinja and has become one of the most popular Python web application frameworks.</p>
+          <!-- Button -->
+          <a href="https://flask-doc.readthedocs.io/en/latest/index.html" target="_blank"
+            class="btn btn-sm waves-effect font-weight-bold">Read Flask Docs</a>
+
+        </div>
+
+      </div>
+      <!-- Card -->
+    </div>
+
+    <div class="col-lg-3">
+      <!-- Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTzTS-HzVFs7y-ZI-xTGY_gBVoONjEH6Ykoy0PLHMooJMLOhLyX"
+            alt="Card image cap">
+          <a href="https://www.python.org/doc/" target="_blank">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Title -->
+          <h4 class="card-title">PYTHON</h4>
+          <!-- Text -->
+          <p class="card-text">Python is an object-oriented, high-level programming language with integrated dynamic
+            semantics primarily for web and app development. It is extremely attractive in the field of Rapid
+            Application
+            Development because it offers dynamic typing and dynamic binding options.</p>
+          <!-- Button -->
+          <a href="https://www.python.org/doc/" target="_blank" class="btn btn-sm" id="python">Read Python Docs</a>
+
+        </div>
+
+      </div>
+      <!-- Card -->
+    </div>
+
+    <div class="col-lg-3">
+      <!-- Card -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRq8F-PS_dKm8S0VFnPg0syP21lDLbKfsbQChUbsfeIIr7m5E3r"
+            alt="Card image cap">
+          <a href="https://devdocs.io/javascript/" target="_blank">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Title -->
+          <h4 class="card-title">JAVASCRIPT</h4>
+          <!-- Text -->
+          <p class="card-text">JavaScript is a scripting or programming language that allows you to implement complex
+            features on web pages. Javascript enables you to create dynamically updating content, control multimedia,
+            animate images. It is the language of the web.</p>
+          <!-- Button -->
+          <a href="https://devdocs.io/javascript/" target="_blank" class="btn btn-sm" id="js">Javascript Docs</a>
+
+        </div>
+
+      </div>
+      <!-- Card -->
+    </div>
+
+  </div>
 </div>
+
 <!-- Footer -->
-<footer class="page-footer font-small special-color-dark pt-4">
+<footer class="page-footer font-small special-color-dark pt-4" style="padding-top: 20px;">
 
   <!-- Footer Elements -->
-  <div class="container">
 
     <!-- Social buttons -->
     <ul class="list-unstyled list-inline text-center">
@@ -38,17 +179,15 @@
       </li>
     </ul>
     <!-- Social buttons -->
-
-  </div>
   <!-- Footer Elements -->
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2019 Copyright:
-    <a href="https://github.com/Jay-68">Collins K. Bett</a>
+    <a href="https://github.com/collinsbett29">Collins K. Bett</a>
   </div>
   <!-- Copyright -->
 
 </footer>
 <!-- Footer -->
-
+</body>
 {% endblock %}

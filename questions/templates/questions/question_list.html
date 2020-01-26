@@ -43,7 +43,7 @@
             {% for question in user_question %}
             <ul>
                 <li>
-                    <a href="{% url 'questions:question_single' slug=question.slug%}">{{question.name}}</a>
+                    <a href="{% url 'questions:question_single' slug=question.slug%}">{{question.body}}</a>
                 </li>
             </ul>
             {% endfor %}
